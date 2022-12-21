@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+:root{
+    /* 바가채워졌을때 색깔 */
+ --line-border-fill:#3498db;
+  /*바가 채워지지 않았을때 색깔  */
+ --line-border-empty:#383838;   
+}
+
+*{
+    border:0;
+    margin:0;
+    box-sizing: border-box;
+
+}
+
+body{
+    background-color: lightblue;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+.container
+{
+    text-align: center;
+}
+
+.progress-container
+{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width:350px;
+}
+
+.progress-container::before
+{
+    content:'';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top:50%;
+    left: 0;
+    height: 4px; /*선을 표시함.*/
+    width: 100%; /*350px 임 (위에 그렇게 선언됨) 표시함*/
+    z-index:-1;
+}
+
+/* 위와똑같은 선생성(색깔만다름) */
+.progress{
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top:50%;
+    left:0;
+    height: 4px;
+    width: 0%; /*0%이므로 그려지지 않음. 이것을 조종하여 채워ㅓ나가는 것.*/
+    z-index:-1;
+    transition: 0.4s ease;
+}
+
+.circle{
+    background-color: white;
+    color: black;
+    border-radius: 50%; /*원모양*/
+    height: 30px;
+    width: 30px;         /*크기*/
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /*가운데 정렬*/
+
+    border:3px solid var(--line-border-empty); /*그냥 circle은 empty 색상적용*/
+    transition: 0.4s ease; /*효과*/
+}
+
+.circle.active
+{
+    border-color:var(--line-border-fill)
+}
+
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+  }
+
+  /*누를때 확대효과 */
+  .btn:active{
+    transform: scale(0.98); 
+  }
+
+  .btn:focus {
+    outline: 0;
+  }
+
+  
+  .btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+  }
